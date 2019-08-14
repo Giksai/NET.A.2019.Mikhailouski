@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecondDayTaskLib", "SecondD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TempConsoleTest", "TempConsoleTest\TempConsoleTest.csproj", "{4D19A5F2-6C0C-4DCF-A894-D0D481257563}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecondDayTests", "SecondDayTests\SecondDayTests.csproj", "{BC659B63-2294-4907-8FB6-7770190BA11E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -19,5 +21,9 @@ Global
 		{4D19A5F2-6C0C-4DCF-A894-D0D481257563}.Debug|x86.Build.0 = Debug|x86
 		{4D19A5F2-6C0C-4DCF-A894-D0D481257563}.Release|x86.ActiveCfg = Release|x86
 		{4D19A5F2-6C0C-4DCF-A894-D0D481257563}.Release|x86.Build.0 = Release|x86
+		{BC659B63-2294-4907-8FB6-7770190BA11E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BC659B63-2294-4907-8FB6-7770190BA11E}.Debug|x86.Build.0 = Debug|Any CPU
+		{BC659B63-2294-4907-8FB6-7770190BA11E}.Release|x86.ActiveCfg = Release|Any CPU
+		{BC659B63-2294-4907-8FB6-7770190BA11E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

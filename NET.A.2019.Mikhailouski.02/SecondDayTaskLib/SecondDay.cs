@@ -56,7 +56,7 @@ namespace SecondDayTaskLib
         /// <param name="input">Input number</param>
         /// <param name="elapsedTime">Time spent on evaluating biggest closest number, in miliseconds</param>
         /// <returns></returns>
-        public static Int32? FindNextBiggerNumber(UInt32? input, out short elapsedTime)
+        public static int FindNextBiggerNumber(int input, out short elapsedTime)
         {
             short currMiliseconds = (short)DateTime.Now.Millisecond;
             elapsedTime = 0;
@@ -67,7 +67,7 @@ namespace SecondDayTaskLib
                 numberArray[i] = int.Parse(input.ToString()[i].ToString());
 
             if (HasNoBiggerNumber(numberArray))                             //Check if given number has closest largest number
-                return null;
+                return -1;
 
             for (int i = numberArray.Length - 1; i >= 0; i--)               //
                 if (numberArray[i] > numberArray[i - 1])
@@ -85,7 +85,7 @@ namespace SecondDayTaskLib
             else
                 elapsedTime = (short)(DateTime.Now.Millisecond - currMiliseconds);
 
-            return Int32.Parse(stringBuilder.ToString());
+            return int.Parse(stringBuilder.ToString());
         }
         /// <summary>
         /// Swaps values of the two given integers
@@ -191,7 +191,7 @@ namespace SecondDayTaskLib
                 x1 = x0 - (Math.Pow(x0, degree) - input) / (Math.Pow(x0, degree - 1) * degree);
             } while (Math.Abs(x1 - x0) > precision);
 
-            return x1;
+            return Math.Round(x1, 5);
         }
         #endregion
     }

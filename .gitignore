@@ -346,3 +346,5 @@ healthchecksdb
 
 # Backup folder for Package Reference Convert tool in Visual Studio 2017
 MigrationBackup/
+NET.A.2019.Mikhailouski.02/.DS_Store
+.DS_Store
