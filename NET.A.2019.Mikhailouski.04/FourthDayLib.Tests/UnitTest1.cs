@@ -53,9 +53,15 @@ namespace Tests
 "1111111111110000000000000000000000000000000000000000000000000000")]
         [TestCase(double.PositiveInfinity, ExpectedResult =
 "0111111111110000000000000000000000000000000000000000000000000000")]
+        [TestCase(-0.0, ExpectedResult =
+"1000000000000000000000000000000000000000000000000000000000000000")]
+        [TestCase(0.0, ExpectedResult =
+"0000000000000000000000000000000000000000000000000000000000000000")]
         public string ToBinaryStringTests(double input)
         {
             return input.ToBinaryString();
         }
+
+        
     }
 }

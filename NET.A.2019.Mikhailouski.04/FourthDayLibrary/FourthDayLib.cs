@@ -13,6 +13,11 @@ namespace FourthDayLibrary
             if (input.Length == 0) throw new ArgumentException("Input array length is zero");
             if (HasZerosInArray(input)) throw new ArgumentException("Having zeros in input array is forbidden");
         }
+        /// <summary>
+        /// Finds GCD of the given numbers using Euclid method
+        /// </summary>
+        /// <param name="timeElapsed">Parameter that holds method's elapsed time</param>
+        /// <param name="input">Input numbers</param>
         public static int EuclidGCD(out long timeElapsed, params int[] input)
         {
             timeElapsed = 0;
@@ -32,8 +37,7 @@ namespace FourthDayLibrary
 
             return input[0];
         }
-
-        private static bool AllEqual(int[] input)
+        private static bool AllEqual(int[] input) //Checks if all elements in the array are equal
         {
             int comparer = input[0];
             for (int i = 1; i < input.Length; i++)
@@ -41,14 +45,14 @@ namespace FourthDayLibrary
 
             return true;
         }
-        private static bool HasZerosInArray(int[] input)
+        private static bool HasZerosInArray(int[] input) //Checks if there is zeros in given array
         {
             foreach (var element in input)
                 if (element == 0) return true;
 
             return false;
         }
-        private static int FindMaxValueIndex(int[] input)
+        private static int FindMaxValueIndex(int[] input) //Returns index of the largest element
         {
             int max = 0;
             foreach(var element in input)
@@ -56,7 +60,7 @@ namespace FourthDayLibrary
 
             return Array.IndexOf(input, max);
         }
-        private static int FindMinValueIndex(int[] input)
+        private static int FindMinValueIndex(int[] input) //Returns index of the Lowest element
         {
             int min = int.MaxValue;
             foreach (var element in input)
@@ -65,6 +69,11 @@ namespace FourthDayLibrary
             return Array.IndexOf(input, min);
         }
 
+        /// <summary>
+        /// Finds GCD of the given numbers using Stein method
+        /// </summary>
+        /// <param name="timeElapsed">Parameter that holds method's elapsed time</param>
+        /// <param name="input">Input numbers</param>
         public static int SteinGCD(out long timeElapsed, params int[] input)
         {
             timeElapsed = 0;
@@ -84,7 +93,7 @@ namespace FourthDayLibrary
 
             return currentGCD;
         }
-        private static int SteinGCDBasic(int a, int b)
+        private static int SteinGCDBasic(int a, int b) //Finds GCD of two numbers using Stein method
         {
             if (a == 0) return b;
             if (b == 0) return a;
@@ -99,6 +108,10 @@ namespace FourthDayLibrary
         #endregion
 
         #region SecondTask
+        /// <summary>
+        /// Converts given number to the binary representation
+        /// </summary>
+        /// <param name="input">Input number</param>
         public static string ToBinaryString(this double input)
         {
             DoubleToLongStruct convertStruct = new DoubleToLongStruct { Double64bits = input };
