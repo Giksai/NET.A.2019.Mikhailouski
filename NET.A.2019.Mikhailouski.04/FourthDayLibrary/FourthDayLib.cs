@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Text;
 
 namespace FourthDayLibrary
 {
@@ -125,6 +126,77 @@ namespace FourthDayLibrary
             } 
 
             return new string(result);
+        }
+        public static string ToBinaryString2(this double input)
+        {
+            int bitsCount = 64;
+
+            StringBuilder result = new StringBuilder();
+
+            if (input > 0) result.Append('0');
+            else result.Append('1');
+
+            double wholePortion = Math.Truncate(input);
+            int decimalPartLength = input.ToString().Length - wholePortion.ToString().Length;
+            double decimalPart = input - (int)Math.Truncate(input);
+            decimalPart = Math.Round(decimalPart, decimalPartLength);
+
+            string LeftPart = ToBinary(wholePortion);
+            string RightPart = ToBinary(decimalPart);
+
+            int moveAmount = LeftPart.Length - 1;
+            int exponent = 1023 + moveAmount;
+
+            if(LeftPart.Length > 0)
+            LeftPart = LeftPart.Substring(1);
+
+            string exponentBinary = ToBinary(exponent);
+            while(exponentBinary.Length < 11)
+                exponentBinary += '0';
+
+            result.Append(exponentBinary + LeftPart + RightPart);
+
+            while (result.Length < 64) result.Append('0');
+
+            return result.ToString();
+        }
+        private static string ToBinary(double input)
+        {
+            StringBuilder output = new StringBuilder();
+            if(input >= 1)
+            {
+                while(input > 1)
+                {
+                    output.Append((input % 2).ToString());
+                    input /= 2;
+                    input = Math.Floor(input);
+                }
+                output.Append('1');
+
+                StringBuilder reversed = new StringBuilder();
+                for (int i = output.Length - 1; i >= 0 ; i--)
+                {
+                    reversed.Append(output[i]);
+                }
+                //char[] charArray = output.ToString().ToCharArray();
+                //Array.Reverse(charArray);
+                //output = new StringBuilder(charArray.ToString());
+                output = reversed;
+            }
+            else
+            {
+                while(input > 0)
+                {
+                    input *= 2;
+                    output.Append(Math.Truncate(input));
+                    int decimalLength = input.ToString().Length - 2;
+                    input -= Math.Truncate(input);
+                    input = Math.Round(input, decimalLength);
+                    if (output.Length == 20) break;
+                }
+            }
+
+            return output.ToString();
         }
 
         [StructLayout(LayoutKind.Explicit)]
