@@ -82,7 +82,7 @@ public class PolinomialTests
         //Arrange
         Polynomial first = new Polynomial(new double[] { 14, 12, 30, 49, 5 });
         Polynomial second = new Polynomial(new double[] { 1, 2, 2, 1 });
-        Polynomial expectedResult = new Polynomial(new double[] { });
+        Polynomial expectedResult = new Polynomial(new double[] {15, 14 });
         //Act
         Polynomial result = first + second;
         //Assert
