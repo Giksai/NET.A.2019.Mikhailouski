@@ -77,7 +77,7 @@ public class SortingTests
 public class PolinomialTests
 {
     [Test]
-    public void PolinomialTest()
+    public void PolynomialTest()
     {
         //Arrange
         Polynomial first = new Polynomial(new double[] { 14, 12, 30, 49, 5 });
@@ -88,4 +88,45 @@ public class PolinomialTests
         //Assert
         Assert.True(result.Equals(expectedResult));
     }
+
+    [Test]
+    public void PolynomialNullTest1()
+    {
+        //Arrange
+        Polynomial nullPolynom = null;
+        Polynomial polynomial = new Polynomial(new double[] { 1, 2, 3 });
+        //Act
+        try
+        {
+            polynomial.Equals(nullPolynom);
+        }
+        catch(ArgumentNullException e)
+        {
+            Assert.Pass();
+        }
+        catch
+        {
+            Assert.Fail();
+        }
+        Assert.Fail();
+    }
+
+    [Test]
+    public void PolynomialNullTest2()
+    {
+        //Arrange
+        Polynomial nullPolynom = null;
+        Polynomial polynomial = new Polynomial(new double[] { 1, 2, 3 });
+        //Act
+        try
+        {
+            nullPolynom.Equals(polynomial);
+        }
+        catch
+        {
+            Assert.Pass();
+        }
+        Assert.Fail();
+    }
+
 }

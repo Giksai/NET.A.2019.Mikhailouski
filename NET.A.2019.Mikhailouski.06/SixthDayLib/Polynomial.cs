@@ -159,7 +159,7 @@ namespace SixthDayLib
             return !(first == second);
         }
         /// <summary>
-        /// Returns string representation of the given polynomal
+        /// Returns string representation of the given polynomial
         /// </summary>
         public override string ToString()
         {
@@ -181,7 +181,7 @@ namespace SixthDayLib
             return str.ToString().Trim();
         }
         /// <summary>
-        /// Performs deep comparison of the two given polynomals
+        /// Performs deep comparison of the two given polynomials
         /// </summary>
         public override bool Equals(object obj)
         {
@@ -200,7 +200,7 @@ namespace SixthDayLib
             return true;
         }
         /// <summary>
-        /// Returns hash code of the given polynomal
+        /// Returns hash code of the given polynomial
         /// </summary>
         public override int GetHashCode()
         {
