@@ -4,6 +4,10 @@ namespace SixthDayLib
 {
     public static class Sorting
     {
+        /// <summary>
+        /// Method sorts rows by summary of it elements
+        /// </summary>
+        /// <param name="input">Input array</param>
         public static void SortRowsBySum(this int[][] input)
         {
             if (input == null) throw new ArgumentNullException();
@@ -14,7 +18,10 @@ namespace SixthDayLib
                     if (input[i].Sum() < input[j].Sum())
                         Swap(ref input[i], ref input[j]);
         }
-
+        /// <summary>
+        /// Method sorts rows by it's max element
+        /// </summary>
+        /// <param name="input">Input array</param>
         public static void SortRowsByMaxElement(this int[][] input)
         {
             if (input == null) throw new ArgumentNullException();
@@ -25,7 +32,10 @@ namespace SixthDayLib
                     if (input[i].MaxElement() < input[j].MaxElement())
                         Swap(ref input[i], ref input[j]);
         }
-
+        /// <summary>
+        /// Method sorts rows by it's min element
+        /// </summary>
+        /// <param name="input">Input array</param>
         public static void SortRowsByMinElement(this int[][] input)
         {
             if (input == null) throw new ArgumentNullException();

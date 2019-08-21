@@ -74,3 +74,18 @@ public class SortingTests
         Assert.AreEqual(unsortedArray, sortedArray);
     }
 }
+public class PolinomialTests
+{
+    [Test]
+    public void PolinomialTest()
+    {
+        //Arrange
+        Polynomial first = new Polynomial(new double[] { 14, 12, 30, 49, 5 });
+        Polynomial second = new Polynomial(new double[] { 1, 2, 2, 1 });
+        Polynomial expectedResult = new Polynomial(new double[] { });
+        //Act
+        Polynomial result = first + second;
+        //Assert
+        Assert.True(result.Equals(expectedResult));
+    }
+}

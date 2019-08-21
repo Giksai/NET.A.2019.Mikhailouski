@@ -3,9 +3,12 @@ using System.Text;
 
 namespace SixthDayLib
 {
+    /// <summary>
+    /// Class represents polynomal
+    /// </summary>
     public sealed class Polynomial
     {
-
+        
         private const double eps = double.Epsilon;
 
         public Polynomial(double[] index)
@@ -15,6 +18,9 @@ namespace SixthDayLib
             Index = index;
         }
 
+        /// <summary>
+        /// Order of the polynomal
+        /// </summary>
         public int Order
         {
             get
@@ -170,7 +176,9 @@ namespace SixthDayLib
 
             return !(first == second);
         }
-
+        /// <summary>
+        /// Returns string representation of the given polynomal
+        /// </summary>
         public override string ToString()
         {
             StringBuilder str = new StringBuilder();
@@ -190,7 +198,9 @@ namespace SixthDayLib
             }
             return str.ToString().Trim();
         }
-
+        /// <summary>
+        /// Performs deep comparison of the two given polynomals
+        /// </summary>
         public override bool Equals(object obj)
         {
             if (obj == null) throw new ArgumentNullException();
@@ -207,7 +217,9 @@ namespace SixthDayLib
             }
             return true;
         }
-
+        /// <summary>
+        /// Returns hash code of the given polynomal
+        /// </summary>
         public override int GetHashCode()
         {
             int hash = 1;
