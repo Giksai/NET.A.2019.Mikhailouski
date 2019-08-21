@@ -10,7 +10,9 @@ namespace SixthDayLib
 
         public Polynomial(double[] index)
         {
-            this.Index = index;
+            if (index == null) throw new ArgumentNullException();
+            if (index.Length < 1) throw new ArgumentException();
+            Index = index;
         }
 
         public int Order
@@ -38,6 +40,8 @@ namespace SixthDayLib
 
         public static Polynomial operator +(Polynomial first, Polynomial second)
         {
+            if (first == null || second == null) throw new ArgumentNullException();
+
             int maxLength = 1 + (first.Order > second.Order ? first.Order : second.Order);
             int minLength = 1 + (first.Order < second.Order ? first.Order : second.Order);
 
@@ -55,6 +59,8 @@ namespace SixthDayLib
 
         public static Polynomial operator -(Polynomial first, Polynomial second)
         {
+            if (first == null || second == null) throw new ArgumentNullException();
+
             int maxLength = 1 + (first.Order > second.Order ? first.Order : second.Order);
             int minLength = 1 + (first.Order < second.Order ? first.Order : second.Order);
 
@@ -73,6 +79,8 @@ namespace SixthDayLib
 
         public static Polynomial operator *(Polynomial polinomial, int multiplier)
         {
+            if (polinomial == null) throw new ArgumentNullException();
+
             double[] resultFactors = new double[polinomial.Order + 1];
             for (int i = 0; i < polinomial.Order + 1; i++)
                 resultFactors[i] = polinomial[i] * multiplier;
@@ -81,11 +89,15 @@ namespace SixthDayLib
 
         public static Polynomial operator *(int multiplier, Polynomial polinomial)
         {
+            if (polinomial == null) throw new ArgumentNullException();
+
             return polinomial * multiplier;
         }
 
         public static Polynomial operator *(Polynomial polinomial, double multiplier)
         {
+            if (polinomial == null) throw new ArgumentNullException();
+
             double[] resultFactors = new double[polinomial.Order + 1];
             for (int i = 0; i < polinomial.Order + 1; i++)
                 resultFactors[i] = polinomial[i] * multiplier;
@@ -94,11 +106,15 @@ namespace SixthDayLib
 
         public static Polynomial operator *(double multiplier, Polynomial polinomial)
         {
+            if (polinomial == null) throw new ArgumentNullException();
+
             return polinomial * multiplier;
         }
 
         public static Polynomial operator *(Polynomial first, Polynomial second)
         {
+            if (first == null || second == null) throw new ArgumentNullException();
+
             int resultOrder = first.Order + second.Order + 1;
             double[] resultForces = new double[resultOrder];
 
@@ -115,6 +131,8 @@ namespace SixthDayLib
 
         public static Polynomial operator /(Polynomial polinomial, int multiplier)
         {
+            if (polinomial == null) throw new ArgumentNullException();
+
             double[] resultFactors = new double[polinomial.Order + 1];
             for (int i = 0; i < polinomial.Order + 1; i++)
                 resultFactors[i] = polinomial[i] / multiplier;
@@ -123,11 +141,15 @@ namespace SixthDayLib
 
         public static Polynomial operator /(int multiplier, Polynomial polinomial)
         {
+            if (polinomial == null) throw new ArgumentNullException();
+
             return polinomial / multiplier;
         }
 
         public static bool operator ==(Polynomial first, Polynomial second)
         {
+            if (first == null || second == null) throw new ArgumentNullException();
+
             if (first.Index.Length != second.Index.Length)
             {
                 return false;
@@ -144,6 +166,8 @@ namespace SixthDayLib
 
         public static bool operator !=(Polynomial first, Polynomial second)
         {
+            if (first == null || second == null) throw new ArgumentNullException();
+
             return !(first == second);
         }
 
@@ -169,6 +193,8 @@ namespace SixthDayLib
 
         public override bool Equals(object obj)
         {
+            if (obj == null) throw new ArgumentNullException();
+
             Polynomial p = obj as Polynomial;
 
             if (p?.Order != this.Order)
