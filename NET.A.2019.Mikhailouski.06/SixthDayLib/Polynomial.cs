@@ -46,6 +46,7 @@ namespace SixthDayLib
 
         public static Polynomial operator +(Polynomial first, Polynomial second)
         {
+            //if (first == null || second == null) return null;
             int maxLength = 1 + (first.Order > second.Order ? first.Order : second.Order);
             int minLength = 1 + (first.Order < second.Order ? first.Order : second.Order);
 
