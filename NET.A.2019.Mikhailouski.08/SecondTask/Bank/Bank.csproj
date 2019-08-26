@@ -1,18 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D88662EE-9393-407F-AC8A-E1A406A211D3}</ProjectGuid>
+    <ProjectGuid>{9D69F843-B463-4117-998F-E2BA0EA7A1C1}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ConsoleApp</RootNamespace>
-    <AssemblyName>ConsoleApp</AssemblyName>
+    <RootNamespace>Bank</RootNamespace>
+    <AssemblyName>Bank</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -41,35 +42,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Find\FindBookByISBN.cs" />
-    <Compile Include="Find\FindBookByName.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sort\SortByName.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BookService\BookService.csproj">
-      <Project>{a3ccb77d-9810-45a5-806b-7f3298aa35b2}</Project>
-      <Name>BookService</Name>
+    <ProjectReference Include="..\AccountService\AccountService.csproj">
+      <Project>{957957FE-65D6-4C96-B702-1A3FFE23E7E5}</Project>
+      <Name>AccountService</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BookStorage\BookStorage.csproj">
-      <Project>{8ec1095d-ebd1-4e13-b818-e162c99910b5}</Project>
-      <Name>BookStorage</Name>
+    <ProjectReference Include="..\Account\Account.csproj">
+      <Project>{51b4a3e6-affa-4464-a044-50bf47a4c69e}</Project>
+      <Name>Account</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Books\Books.csproj">
-      <Project>{e26d1b51-3b83-4251-9dae-f9ddbe1dd097}</Project>
-      <Name>Books</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IBookStorage\IBookStorage.csproj">
-      <Project>{cda62a87-1424-45e3-b418-2fdeb9af87cb}</Project>
-      <Name>IBookStorage</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ParameterForSearching\ParameterForSearching.csproj">
-      <Project>{6d29b987-5a60-47f0-be5a-142beb1499bb}</Project>
-      <Name>ParameterForSearching</Name>
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
+      <Project>{69D3191F-6A7A-4423-AF7D-CFF3DE151DF3}</Project>
+      <Name>Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

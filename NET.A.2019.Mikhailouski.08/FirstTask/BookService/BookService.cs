@@ -41,9 +41,7 @@ namespace BookService
             {
                 throw new ArgumentNullException();
             }
-            
             books.Add(book);
-            
         }
 
         /// <inheritdoc />

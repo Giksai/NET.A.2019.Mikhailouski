@@ -32,29 +32,24 @@ namespace Books
             Pages = pages;
         }
 
-        /// <inheritdoc />
-        /// IEquatable override method 
         /// <summary>
+        /// Implementation of IEquatable interface
         /// </summary>
         public bool Equals(Book book)
         {
-            if(ReferenceEquals(book, null))
-            {
+            if (book == null)
                 return false;
-            }
-            if (ReferenceEquals(this, book))
-            {
-                return true;
-            }
-            return book.Isbn == Isbn;
+
+            return Isbn == book.Isbn && Author == book.Author && Name == book.Name
+                   && PublishingHouse == book.PublishingHouse && Year == book.Year && Pages == book.Pages;
         }
 
         /// <summary>
         /// override object class method Equals
         /// </summary>
-        public override bool Equals(object bookEq)
+        public override bool Equals(object obj)
         {
-            var book = (Book) bookEq;
+            var book = (Book)obj;
             if (book == null)
                 return false;
 
@@ -118,5 +113,6 @@ namespace Books
             return string.Compare(Name, book.Name);
         }
 
+        
     }
 }
