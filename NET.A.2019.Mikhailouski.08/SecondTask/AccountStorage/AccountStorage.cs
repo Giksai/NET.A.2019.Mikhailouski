@@ -8,14 +8,11 @@ namespace AccountStorage
 {
     public class AccountStorage
     {
-        #region Private const 
         /// <summary>
         /// Field path is the way of file
         /// </summary>
         private const string Path = "E:\\Bin9";
-        #endregion
 
-        #region public
         
         /// <summary>
         /// Read account from file
@@ -63,9 +60,7 @@ namespace AccountStorage
                     Writer(bw, account);
             }
         }
-        #endregion
 
-        #region private
         private static void Writer(BinaryWriter binary, Account.Account account)
         {
             binary.Write(account.Id.ToString());
@@ -100,7 +95,6 @@ namespace AccountStorage
             };
 
         }
-        #endregion
 
     }
 }

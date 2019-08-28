@@ -10,10 +10,8 @@ namespace AccountService
 {
     public class AccountService : IAccountService
     {
-        #region private fild
         private readonly AccountStorage.AccountStorage _accountStorage;
-        #endregion
-        #region Constructor
+
         /// <summary>
         /// Constructor 
         /// </summary>
@@ -21,13 +19,10 @@ namespace AccountService
         {
             _accountStorage = new AccountStorage.AccountStorage();
         }
-        #endregion
 
-        #region public
         /// <summary>
         /// GetAllAccounts returns all elements of file 
         /// </summary>
-        /// <returns>IEnumerable</returns>
         public IEnumerable<Account.Account> GetAllAccounts()
         {
             return _accountStorage.ReadAccountFromFile();
@@ -36,8 +31,6 @@ namespace AccountService
         /// <summary>
         /// AddAmount increases amount field
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="amount"></param>
         public void AddAmount(int id, decimal amount)
         {
             var account = FindAccount(id);
@@ -57,8 +50,6 @@ namespace AccountService
         /// <summary>
         /// DivAmmount decrease amount field
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="amount"></param>
         public void DivAmount(int id, decimal amount)
         {
             var account = FindAccount(id);
@@ -69,12 +60,6 @@ namespace AccountService
         /// <summary>
         /// CreateAccount create new account
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="ownerFirstName"></param>
-        /// <param name="ownerLastName"></param>
-        /// <param name="amount"></param>
-        /// <param name="points"></param>
-        /// <param name="type"></param>
         public void CreateAccount(Account.Account account)
         {
             var accounts = _accountStorage.ReadAccountFromFile().ToList();
@@ -86,7 +71,6 @@ namespace AccountService
         /// <summary>
         /// CloseAccount assigns account statues fild Close
         /// </summary>
-        /// <param name="id"></param>
         public void CloseAccount(int id)
         {
             if(id < 0) throw new ArgumentException();
@@ -95,14 +79,11 @@ namespace AccountService
             account.Status = StatusAccount.Close;
         }
 
-        #endregion
-        #region private
         private Account.Account FindAccount(int id)
         {
 
             var accounts = _accountStorage.ReadAccountFromFile().ToList();
             return accounts.FirstOrDefault(account => account.Id == id);
         }
-#endregion
     }
 }

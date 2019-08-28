@@ -4,7 +4,6 @@ namespace Account
 {
     public class Account
     {
-        #region properties
         public int Id { get; set; }
         public string OwnerFirstName { get; set; }
         public string OwnerLastName { get; set; }
@@ -13,9 +12,6 @@ namespace Account
         public StatusAccount Status { get; set; }
         public AccountType Type { get; set; }
 
-        #endregion
-
-        #region Constructor
         public Account(int id, string ownerFirstName, string ownerLastName, decimal amount, int points, AccountType type)
         {
             Id = id;
@@ -30,8 +26,6 @@ namespace Account
         public Account()
         {
         }
-        #endregion
-        #region public
 
         /// <summary>
         /// Override ToString
@@ -43,7 +37,6 @@ namespace Account
                 Id, OwnerFirstName,
                 OwnerLastName, Amount, Points, Status, Type);
         }
-#endregion
     }
 }
 
