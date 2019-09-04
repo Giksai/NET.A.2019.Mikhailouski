@@ -4,8 +4,14 @@ using System.IO;
 
 namespace Kartoteka
 {
+    /// <summary>
+    /// Class that contains all commands for the console
+    /// </summary>
     public static class Commands
     {
+        /// <summary>
+        /// Command for creating and adding record to the database
+        /// </summary>
         public static void CreateCommand()
         {
             Record recordToAdd = new Record();
@@ -41,12 +47,23 @@ namespace Kartoteka
                 Console.WriteLine("Error: " + e.Message);
             }
         }
-
+        /// <summary>
+        /// Prints all records in database if no additional parameters specified
+        /// or prints only specified property of all records in database
+        /// </summary>
+        /// <param name="parameters">List of properties to display</param>
         public static void ListCommand(List<string> parameters) => DatabaseCommands.PrintData(parameters);
 
+        /// <summary>
+        /// Prints current amount of records in database
+        /// </summary>
         public static void StatCommand() => Console.WriteLine(
             DatabaseCommands.AmountOfRecords + " records in database");
 
+        /// <summary>
+        /// Prints records that has specified values
+        /// </summary>
+        /// <param name="parameters">Key-value array with key for property and value for record value</param>
         public static void FindCommand(List<string> parameters)
         {
             parameters.RemoveAt(0);
@@ -95,6 +112,10 @@ namespace Kartoteka
             
         }
 
+        /// <summary>
+        /// Replaces old record with given id with created record
+        /// </summary>
+        /// <param name="id">Id of the record to replace</param>
         public static void EditCommand(int id)
         {
             Record recordToEdit = DatabaseCommands.GetRecordById(id);
@@ -126,6 +147,9 @@ namespace Kartoteka
             Console.WriteLine("Changes saved");
         }
 
+        /// <summary>
+        /// Prints all available commands
+        /// </summary>
         public static void PrintMenu()
         {
             Console.WriteLine("Available commands: \n" +
@@ -144,6 +168,11 @@ namespace Kartoteka
                     "clr");
         }
 
+        /// <summary>
+        /// Creates xml file with given name, or with default name,
+        /// and fills it with records
+        /// </summary>
+        /// <param name="fileName">Name of the xml file</param>
         public static void ExportXMLCommand(string fileName = "defaultXML.xml")
         {
             try
@@ -158,6 +187,12 @@ namespace Kartoteka
 
             }
         }
+
+        /// <summary>
+        /// Reads from xml file with given name, or with default name,
+        /// and replaces all records with records from the file
+        /// </summary>
+        /// <param name="fileName">Name of the xml file</param>
         public static void ImportXMLCommand(string fileName = "defaultXML.xml")
         {
             try
@@ -171,6 +206,11 @@ namespace Kartoteka
             }
         }
 
+        /// <summary>
+        /// Reads from cvs file with given name, or with default name,
+        /// and replaces all records with records from the file
+        /// </summary>
+        /// <param name="fileName">Name of the cvs file</param>
         public static void ImportCSVCommand(string fileName = "defaultCSV.csv")
         {
             if (!File.Exists(fileName))
@@ -188,6 +228,12 @@ namespace Kartoteka
                 Console.WriteLine("Could not import records from CSV file \n" + e.Message);
             }
         }
+
+        /// <summary>
+        /// Creates cvs file with given name, or with default name,
+        /// and fills it with records
+        /// </summary>
+        /// <param name="fileName">Name of the cvs file</param>
         public static void ExportCSVCommand(string fileName = "defaultCSV.csv")
         {
             try
@@ -201,6 +247,9 @@ namespace Kartoteka
             }
         }
 
+        /// <summary>
+        /// Permanently deletes all records from the database
+        /// </summary>
         public static void DeleteAllRecords()
         {
             if (DatabaseCommands.AmountOfRecords == 0)
@@ -218,6 +267,12 @@ namespace Kartoteka
                 Console.WriteLine("Could not delete records \n" + e.Message);
             }
         }
+
+        /// <summary>
+        /// Parses id from string to int and
+        /// deletes record with given id from database
+        /// </summary>
+        /// <param name="idStr">id of the record</param>
         public static void RemoveRecordById(string idStr)
         {
             if (!int.TryParse(idStr, out int id))
@@ -228,6 +283,11 @@ namespace Kartoteka
             DatabaseCommands.RemoveRecord(id);
         }
 
+        /// <summary>
+        /// Converts string parameter to the corresponding enum value
+        /// </summary>
+        /// <param name="parameter">String representation of the record property</param>
+        /// <returns></returns>
         public static RecordParameter StrParamToEnum(string parameter)
         {
             if (parameter == "firstname") return RecordParameter.FirstName;
@@ -237,6 +297,9 @@ namespace Kartoteka
             return RecordParameter.WrongParameter;
         }
 
+        /// <summary>
+        /// Properties of the record
+        /// </summary>
         public enum RecordParameter
         {
             FirstName, LastName, DateOfBirth, ID, WrongParameter

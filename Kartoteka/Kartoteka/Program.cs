@@ -16,6 +16,7 @@ namespace Kartoteka
             catch(Exception e)
             {
                 Console.WriteLine("ERROR: " + e.Message);
+                return;
             }
 
             Commands.PrintMenu();
