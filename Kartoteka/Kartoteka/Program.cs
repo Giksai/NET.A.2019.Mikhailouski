@@ -46,7 +46,7 @@ namespace Kartoteka
                         break;
                     case "edit":
                         if (inputCommand.Count == 2)
-                            Commands.EditCommand(int.Parse(inputCommand[1]));
+                            Commands.EditCommand(inputCommand[1]);
                         else Console.WriteLine("Wrong parameters for the edit command");
                             break;
                     case "menu":

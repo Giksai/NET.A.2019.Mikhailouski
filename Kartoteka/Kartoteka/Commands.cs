@@ -113,11 +113,18 @@ namespace Kartoteka
         }
 
         /// <summary>
-        /// Replaces old record with given id with created record
+        /// Parses given id from string to int and
+        /// replaces old record with given id with created record
         /// </summary>
         /// <param name="id">Id of the record to replace</param>
-        public static void EditCommand(int id)
+        public static void EditCommand(string idStr)
         {
+            int id;
+            if(!int.TryParse(idStr, out id))
+            {
+                Console.WriteLine("Wrong parameter in the edit command");
+                return;
+            }
             Record recordToEdit = DatabaseCommands.GetRecordById(id);
             if(recordToEdit == null)
             {
