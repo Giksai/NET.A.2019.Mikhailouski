@@ -16,7 +16,9 @@ namespace Bank
     {
         static void Main(string[] args)
         {
-            List<Account.Account> accounts = new List<Account.Account>(); 
+            List<Account.Account> accounts = new List<Account.Account>();
+
+            Account.Account acc = new Account.Account(1, "Denchik", "Mikhailouski", 123, 5, AccountType.Base);
 
             IAccountService accountService = new AccountService.AccountService(); 
             accountService.CreateAccount(new Account.Account(111, "Alexandra", "Arkhipenko", 100m, 5, AccountType.Base));

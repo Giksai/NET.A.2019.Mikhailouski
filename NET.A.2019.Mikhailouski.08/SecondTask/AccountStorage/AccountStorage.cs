@@ -11,7 +11,7 @@ namespace AccountStorage
         /// <summary>
         /// Field path is the way of file
         /// </summary>
-        private const string Path = "E:\\Bin9";
+        private const string Path = "file.bin";
 
         
         /// <summary>
@@ -50,7 +50,6 @@ namespace AccountStorage
         /// <summary>
         /// Overwrite file
         /// </summary>
-        /// <param name="accounts"></param>
         public void OverWriteFile(IEnumerable<Account.Account> accounts)
         {
             using (var bw = new BinaryWriter(File.Open(Path, FileMode.Create,
