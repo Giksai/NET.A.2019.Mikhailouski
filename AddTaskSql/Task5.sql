@@ -1,0 +1,1 @@
+select employee_id from orders where shipped_date between '2006-01-01' and '2006-01-31' order by employee_id asc;
