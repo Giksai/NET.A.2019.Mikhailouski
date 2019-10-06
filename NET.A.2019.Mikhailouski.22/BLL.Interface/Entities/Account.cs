@@ -13,9 +13,8 @@ namespace BLL.Interface.Entities
         public AccountStatus Status { get; set; }
         public AccountType Type { get; set; }
 
-        public Account(int id, string ownerFirstName, string ownerLastName, decimal amount, int points, AccountType type)
+        public Account(string ownerFirstName, string ownerLastName, decimal amount, int points, AccountType type)
         {
-            Id = id;
             OwnerFirstName = ownerFirstName;
             OwnerLastName = ownerLastName;
             Amount = amount;
