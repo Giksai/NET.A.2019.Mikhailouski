@@ -1,15 +1,15 @@
-﻿using System;
+﻿using BLL.Interface.Entities;
 using System.Collections.Generic;
-using Account;
 
-namespace Interfaces
+namespace BLL.Interface.Interfaces
 {
     public interface IAccountService
     {
-        IEnumerable<Account.Account> GetAllAccounts();
+        IEnumerable<Account> GetAllAccounts();
         void AddAmount(int id, decimal amount);
         void DivAmount(int id, decimal amount);
         void CloseAccount(int id);
-        void CreateAccount(Account.Account account);
+        void CreateAccount(Account account);
+        void PrintAllAccounts();
     }
 }

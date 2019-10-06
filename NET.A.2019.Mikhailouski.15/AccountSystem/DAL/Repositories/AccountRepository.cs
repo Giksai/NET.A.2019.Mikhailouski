@@ -1,30 +1,26 @@
 ﻿using System;
+using DAL.Interface.Interfaces;
+using BLL.Interface.Entities;
 using System.Collections.Generic;
 using System.IO;
-using Account;
 
-
-namespace AccountStorage
+namespace DAL.Repositories 
 {
-    public class AccountStorage
+    public class AccountRepository : IRepository
     {
-        /// <summary>
-        /// Field path is the way of file
-        /// </summary>
         private const string Path = "file.bin";
+        private static AccountRepository instance;
 
-        
         /// <summary>
-        /// Read account from file
+        /// Reads all accounts from file
         /// </summary>
-        /// <returns></returns>
-        public IEnumerable<Account.Account> ReadAccountFromFile()
+        public IEnumerable<Account> ReadAccountsFromFile()
         {
-            var accounts = new List<Account.Account>();
+            var accounts = new List<Account>();
             using (var br = new BinaryReader(File.Open(Path, FileMode.OpenOrCreate,
                 FileAccess.Read, FileShare.Read)))
             {
-                while (br.BaseStream.Position != br.BaseStream.Length)
+                while (br.PeekChar() > -1)
                 {
                     var account = Reader(br);
                     accounts.Add(account);
@@ -34,12 +30,23 @@ namespace AccountStorage
             return accounts;
         }
 
-        /// <summary>
-        /// Write account to file
-        /// </summary>
-        /// <param name="account"></param>
-        public void AppendAccountToFile(Account.Account account)
+        public static AccountRepository GetInstance()
         {
+            if (instance == null)
+                instance = new AccountRepository();
+            return instance;
+        }
+
+        private AccountRepository() { }
+
+        /// <summary>
+        /// Appends given account to repository
+        /// </summary>
+        /// <param name="account">Account to append</param>
+        public void AppendAccountToFile(Account account)
+        {
+            if (!File.Exists(Path)) throw new Exception("File does not exists!");
+
             using (var bw = new BinaryWriter(File.Open(Path, FileMode.Append,
                 FileAccess.Write, FileShare.None)))
             {
@@ -48,9 +55,9 @@ namespace AccountStorage
         }
 
         /// <summary>
-        /// Overwrite file
+        /// Overwrites current file with new set of accounts
         /// </summary>
-        public void OverWriteFile(IEnumerable<Account.Account> accounts)
+        public void OverWriteFile(IEnumerable<Account> accounts)
         {
             using (var bw = new BinaryWriter(File.Open(Path, FileMode.Create,
                 FileAccess.Write, FileShare.None)))
@@ -60,19 +67,19 @@ namespace AccountStorage
             }
         }
 
-        private static void Writer(BinaryWriter binary, Account.Account account)
+        private static void Writer(BinaryWriter binary, Account account)
         {
-            binary.Write(account.Id.ToString());
+            binary.Write(account.Id);
             binary.Write(account.OwnerFirstName);
             binary.Write(account.OwnerLastName);
             binary.Write(account.Amount);
             binary.Write(account.Points);
             binary.Write(account.Status.ToString());
             binary.Write(account.Type.ToString());
-            
+
         }
 
-        private static Account.Account Reader(BinaryReader binary)
+        private static Account Reader(BinaryReader binary)
         {
             var id = binary.ReadInt32();
             var ownerFirstName = binary.ReadString();
@@ -82,19 +89,17 @@ namespace AccountStorage
             var status = binary.ReadString();
             var type = binary.ReadString();
 
-            return new Account.Account()
+            return new Account()
             {
                 Id = id,
                 OwnerFirstName = ownerFirstName,
                 OwnerLastName = ownerLastName,
                 Amount = amount,
                 Points = points,
-                Status = (StatusAccount) Enum.Parse(typeof(StatusAccount), status),
+                Status = (AccountStatus)Enum.Parse(typeof(AccountStatus), status),
                 Type = (AccountType)Enum.Parse(typeof(AccountType), type)
             };
 
         }
-
     }
 }
-
