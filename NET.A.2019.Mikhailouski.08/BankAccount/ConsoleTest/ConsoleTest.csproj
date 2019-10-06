@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AccountModel\AccountModel.csproj" />
+    <ProjectReference Include="..\AccountService\AccountService.csproj" />
+  </ItemGroup>
+</Project>

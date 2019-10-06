@@ -51,7 +51,7 @@ namespace _13_thDay
         }
 
         /// <summary>
-        /// Add element to the tree
+        /// Adds element to the tree
         /// </summary>
         /// <param name="item">element to be added</param>
         /// <exception cref="ArgumentNullException">argument must not be null</exception>
@@ -85,7 +85,7 @@ namespace _13_thDay
         }
 
         /// <summary>
-        /// Add some elements to the tree
+        /// Adds some elements to the tree
         /// </summary>
         /// <param name="elems">elements to be added</param>
         /// <exception cref="ArgumentNullException">Elements must not be null</exception>
@@ -100,7 +100,7 @@ namespace _13_thDay
         }
 
         /// <summary>
-        /// Check if tree contains element
+        /// Check if tree contains an element
         /// </summary>
         /// <param name="value">element to be checked</param>
         /// <returns>true if tree contains the element otherwise false</returns>

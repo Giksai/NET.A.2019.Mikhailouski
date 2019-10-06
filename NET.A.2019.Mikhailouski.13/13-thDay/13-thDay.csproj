@@ -6,4 +6,10 @@
     <RootNamespace>_13_thDay</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="StyleCop.MSBuild" Version="6.1.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
 </Project>
