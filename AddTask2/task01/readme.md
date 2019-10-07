@@ -40,24 +40,24 @@
 Создайте самостоятельно еще минимум 5 сложных запросов и запишите их в таблицу.
 
 
-8. Найдите базовый класс, от которого унаследован _NorthwindModel.NorthwindEntities_.
-    * В какой сборке находится базовый класс?
-    * По какому пути лежит эта сборка?
-    * Какая версия у сборки, в которой находится базовый класс?
-    * Найдите документацию для этого класса на портале [docs.microsoft.com](https://docs.microsoft.com/).
+8. 
+    *Найдите базовый класс, от которого унаследован _NorthwindModel.NorthwindEntities_ :  DataServiceContext
+    * В какой сборке находится базовый класс?    :   System.Data.Services.Client
+    * По какому пути лежит эта сборка?    :     В NuGet пакете
+    * Какая версия у сборки, в которой находится базовый класс?   :  5.6.3
 
 
 Запустите приложение и, используя окно _Threads_, запишите параметры ID, Managed ID и Name для текущего потока в каждой точке останова.
 
 3. Заполните таблицу:
 
-| Breakpoint | Thread ID   | Thread Managed ID | Thread Name |
+| Breakpoint | Thread ID   | Location          | Thread Name |
 | ---------- | ----------- | ----------------- | ----------- |
-| #1.1       |             |                   |             |
-| #1.2       |             |                   |             |
-| #1.3       |             |                   |             |
-| #2.1       |             |                   |             |
-| #2.2       |             |                   |             |
-| #2.3       |             |                   |             |
+| #1.1       | 16704212    | 0x0 in ODataEntity.Program.Main(string[] args) | <No Name>   |
+| #1.2       | 16729035    | 0x0 in ODataEntity.Program.Main.AnonymousMethod__0(System.IAsyncResult ar) | Worker Thread |
+| #1.3       | 16739801    | 0x0 in ODataEntity.Program.Main(string[] args) | <No Name>   |
+| #2.1       | 16755512    | 0x0 in ODataEntity.Program.Main(string[] args) | <No Name>   |
+| #2.2       | 16760928    | ODataEntity.Program.Main.AnonymousMethod__0(System.IAsyncResult iar) | Worker Thread |
+| #2.3       | 16760928    | ODataEntity.Program.Main(string[] args) |  Worker Thread |
 
 
